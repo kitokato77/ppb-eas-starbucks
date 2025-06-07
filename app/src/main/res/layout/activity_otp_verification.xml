@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/otp_verification_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/starbucks_green"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_otp"
+        android:textSize="16sp"
+        android:textColor="@color/gray"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+62 812-****-7890"
+        android:textSize="14sp"
+        android:textColor="@color/gray"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <EditText
+        android:id="@+id/etOtpCode"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/edittext_rounded"
+        android:padding="16dp"
+        android:hint="123456"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:maxLength="6"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/btnVerifyOTP"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/verify_otp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/button_rounded" />
+
+</LinearLayout>

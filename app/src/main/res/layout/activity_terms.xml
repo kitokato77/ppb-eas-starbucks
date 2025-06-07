@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/terms_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/starbucks_green"
+        android:padding="16dp"
+        android:gravity="center" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dengan menggunakan aplikasi Starbucks, Anda menyetujui syarat dan ketentuan berikut:\n\n1. Aplikasi ini hanya untuk pengguna yang berusia 17 tahun ke atas\n2. Reward khusus berlaku untuk pengguna baru\n3. Satu reward per akun\n4. Reward berlaku di seluruh gerai Starbucks Indonesia\n5. Tidak dapat digabung dengan promo lain\n\n... (syarat dan ketentuan lainnya)"
+            android:textSize="14sp"
+            android:textColor="@color/gray" />
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnAgree"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/agree"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:background="@drawable/button_rounded"
+        android:layout_margin="16dp" />
+
+</LinearLayout>
