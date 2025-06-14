@@ -2,45 +2,53 @@ package com.irhamppba.starbucks
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class OtpVerificationActivity : AppCompatActivity() {
+
     private lateinit var tvPhoneNumber: TextView
-    private lateinit var etOtpCode: EditText
+    private lateinit var etOtp1: EditText
+    private lateinit var etOtp2: EditText
+    private lateinit var etOtp3: EditText
+    private lateinit var etOtp4: EditText
     private lateinit var btnVerifyOTP: Button
-    private val defaultOtpCode = "123456" // Default OTP untuk testing
+
+    private val defaultOtpCode = "1234" // disesuaikan dengan 4 kolom OTP
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp_verification)
 
+        // Init views
         tvPhoneNumber = findViewById(R.id.tvPhoneNumber)
-        etOtpCode = findViewById(R.id.etOtpCode)
+        etOtp1 = findViewById(R.id.etOtp1)
+        etOtp2 = findViewById(R.id.etOtp2)
+        etOtp3 = findViewById(R.id.etOtp3)
+        etOtp4 = findViewById(R.id.etOtp4)
         btnVerifyOTP = findViewById(R.id.btnVerifyOTP)
 
-        // Get phone number from previous activity
+        // Set phone number
         val phoneNumber = intent.getStringExtra("phone_number") ?: ""
-        val maskedPhone = maskPhoneNumber(phoneNumber)
-        tvPhoneNumber.text = maskedPhone
+        tvPhoneNumber.text = maskPhoneNumber(phoneNumber)
 
+        // Auto move cursor to next input
+        setupOtpAutoMove()
+
+        // Button click
         btnVerifyOTP.setOnClickListener {
-            val enteredOtp = etOtpCode.text.toString().trim()
+            val enteredOtp = etOtp1.text.toString() +
+                    etOtp2.text.toString() +
+                    etOtp3.text.toString() +
+                    etOtp4.text.toString()
 
-            if (enteredOtp.isEmpty()) {
-                Toast.makeText(this, "Masukkan kode OTP", Toast.LENGTH_SHORT).show()
+            if (enteredOtp.length != 4) {
+                Toast.makeText(this, "Masukkan 4 digit kode OTP", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            if (enteredOtp.length != 6) {
-                Toast.makeText(this, "Kode OTP harus 6 digit", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            // Verify OTP (using default code for testing)
             if (enteredOtp == defaultOtpCode) {
                 Toast.makeText(this, "Verifikasi berhasil!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, PersonalInfoActivity::class.java)
@@ -52,13 +60,33 @@ class OtpVerificationActivity : AppCompatActivity() {
         }
     }
 
+    private fun setupOtpAutoMove() {
+        etOtp1.addTextChangedListener(OtpTextWatcher(etOtp1, etOtp2))
+        etOtp2.addTextChangedListener(OtpTextWatcher(etOtp2, etOtp3))
+        etOtp3.addTextChangedListener(OtpTextWatcher(etOtp3, etOtp4))
+    }
+
     private fun maskPhoneNumber(phoneNumber: String): String {
         return if (phoneNumber.length > 4) {
             val prefix = phoneNumber.substring(0, 4)
-            val suffix = phoneNumber.substring(phoneNumber.length - 4)
+            val suffix = phoneNumber.takeLast(4)
             "$prefix****$suffix"
         } else {
             phoneNumber
         }
+    }
+
+    private inner class OtpTextWatcher(
+        private val currentEditText: EditText,
+        private val nextEditText: EditText?
+    ) : TextWatcher {
+        override fun afterTextChanged(s: Editable?) {
+            if (s?.length == 1) {
+                nextEditText?.requestFocus()
+            }
+        }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     }
 }

@@ -9,53 +9,152 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/otp_verification_title"
-        android:textSize="20sp"
+        android:text="Verify mobile number"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/starbucks_green"
-        android:gravity="center"
-        android:layout_marginBottom="32dp" />
+        android:textColor="@color/black"
+        android:layout_marginBottom="24dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enter_otp"
+        android:text="Enter the verification code that we have sent to"
         android:textSize="16sp"
         android:textColor="@color/gray"
-        android:gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/tvPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+62 812-****-7890"
-        android:textSize="14sp"
-        android:textColor="@color/gray"
-        android:gravity="center"
+        android:text="083841234098"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_marginBottom="32dp" />
 
-    <EditText
-        android:id="@+id/etOtpCode"
+    <!-- Individual OTP Input Fields -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@drawable/edittext_rounded"
-        android:padding="16dp"
-        android:hint="123456"
-        android:inputType="number"
-        android:textSize="18sp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:maxLength="6"
-        android:layout_marginBottom="32dp" />
+        android:layout_marginBottom="32dp">
+
+        <EditText
+            android:id="@+id/etOtp1"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:background="@drawable/otp_input_background"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp" />
+
+        <EditText
+            android:id="@+id/etOtp2"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:background="@drawable/otp_input_background"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp" />
+
+        <EditText
+            android:id="@+id/etOtp3"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:background="@drawable/otp_input_background"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="8dp" />
+
+        <EditText
+            android:id="@+id/etOtp4"
+            android:layout_width="56dp"
+            android:layout_height="64dp"
+            android:background="@drawable/otp_input_background"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="1"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <!-- Resend Options -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:layout_marginBottom="48dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haven't got the code yet? "
+            android:textSize="14sp"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/tvResend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend"
+            android:textSize="14sp"
+            android:textColor="#1E3932"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" or "
+            android:textSize="14sp"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/tvSendViaWhatsApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Via WhatsApp"
+            android:textSize="14sp"
+            android:textColor="#1E3932"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+    <!-- Spacer to push button to bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btnVerifyOTP"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="@string/verify_otp"
+        android:text="Verify"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:background="@drawable/button_rounded" />
+        android:background="@drawable/button_rounded"
+        android:enabled="true" />
 
 </LinearLayout>
